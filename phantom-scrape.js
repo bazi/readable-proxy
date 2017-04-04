@@ -30,6 +30,18 @@ function runReadability(url, userAgent, pageContent) {
     scheme: location.protocol.substr(0, location.protocol.indexOf(":")),
     pathBase: location.protocol + "//" + location.host + location.pathname.substr(0, location.pathname.lastIndexOf("/") + 1)
   };
+
+  var items=[];
+  // collection of elements from DOM below is live; it is automatically updated when underlying doc is changed
+  // so directly removing item from that collection won't remove all the elements
+  var elems = document.getElementsByClassName("link-callout");
+  for (var i=0; i<elems.length; i++) {
+    var item=elems[i];
+    if (item.classList.contains('amazon-callout')) continue;
+    items.push(item);
+  }
+  items.forEach( function(item) { item.remove(); } );
+
   try {
     var readabilityObj = new Readability(uri, document);
     var isProbablyReaderable = readabilityObj.isProbablyReaderable();
