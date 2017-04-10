@@ -37,9 +37,14 @@ function runReadability(url, userAgent, pageContent) {
   var elems = document.getElementsByClassName("link-callout");
   for (var i=0; i<elems.length; i++) {
     var item=elems[i];
-    if (item.classList.contains('amazon-callout')) continue;
     items.push(item);
   }
+  var twitterElems = document.getElementsByTagName("blockquote");
+  for (var i=0; i < twitterElems.length; i++ ) { 
+    var item = twitterElems[i];
+    if ( item.classList.contains("twitter-tweet") ) items.push(item);
+  }
+  // delete all collected items
   items.forEach( function(item) { item.remove(); } );
 
   try {
