@@ -24,7 +24,6 @@
     "html-md": "^3.0.*",
     "markdown": "^0.5.*",
     "object-assign": "^2.0.*",
-    "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.*"
   },
   "devDependencies": {
