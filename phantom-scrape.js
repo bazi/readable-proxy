@@ -44,6 +44,11 @@ function runReadability(url, userAgent, pageContent) {
     var item = twitterElems[i];
     if ( item.classList.contains("twitter-tweet") ) items.push(item);
   }
+  var figCaptions = document.getElementsByTagName("figcaption");
+  for(var i=0; i < figCaptions.length; i++) {
+    var item = figCaptions[i];
+    if( item.classList.contains("wp-caption-text") ) items.push(item);
+  }
   // delete all collected items
   items.forEach( function(item) { item.remove(); } );
 
